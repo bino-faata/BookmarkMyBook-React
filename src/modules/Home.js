@@ -1,18 +1,20 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div>
-      <h2>HELLO</h2>
-      <p>Cras facilisis urna ornare ex volutpat, et
-      convallis erat elementum. Ut aliquam, ipsum vitae
-      gravida suscipit, metus dui bibendum est, eget rhoncus nibh
-      metus nec massa. Maecenas hendrerit laoreet augue
-      nec molestie. Cum sociis natoque penatibus et magnis
-      dis parturient montes, nascetur ridiculus mus.</p>
-
-      <p>Duis a turpis sed lacus dapibus elementum sed eu lectus.</p>
-    </div>
+    <article className="pa3">
+      <h1 className="f3 f2-m f1-l">Home Page</h1>
+      <p className="lh-copy">
+        This simple application allows you collect books what you read.
+      </p>
+      <p className="lh-copy">
+        To watch your library click on <NavLink to="/library">Library</NavLink> link menu
+      </p>
+      <p className="lh-copy">
+        Adding books is on the <NavLink to="/addbook">Add Book</NavLink> link menu
+      </p>
+    </article>
   );
 };
 

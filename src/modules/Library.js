@@ -2,18 +2,21 @@ import React from "react";
 
 const Library = () => {
   return (
-    <div>
-      <h2>Library</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Book</li>
-          <li>Book</li>
-          <li>Book</li>
-          <li>Book</li>
-          <li>Book</li>
-        </ol>
-    </div>
+    <article className="pa3">
+      <h1 className="f3 f2-m f1-l">Library</h1>
+      <p className="lh-copy">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+        vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+        no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      </p>
+      <p className="lh-copy">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+        vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+        no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      </p>
+    </article>
   );
 };
 
