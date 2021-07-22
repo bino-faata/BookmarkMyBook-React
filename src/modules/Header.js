@@ -8,7 +8,7 @@ const Header = () => {
         <h2 className="">BookmarkMyBook</h2>
       </a>
       <div className="db dtc-l v-mid w-100 w-75-l tc tr-l">
-        <NavLink className="link navlink dim black f6 f5-l dib mr3 mr4-l" exact to="/" title="Home">Home</NavLink>
+        <NavLink className="link navlink dim black f6 f5-l dib mr3 mr4-l" replace exact to="/" title="Home">Home</NavLink>
         <NavLink className="link navlink dim black f6 f5-l dib mr3 mr4-l" to="/library" title="Library">Library</NavLink>
         <NavLink className="link navlink dim black f6 f5-l dib mr3 mr4-l" to="/addbook" title="Add Book">Add Book</NavLink>
         <NavLink className="link navlink dim black f6 f5-l dib mr3 mr4-l" to="/importlibrary" title="Import JSON">Import JSON</NavLink>

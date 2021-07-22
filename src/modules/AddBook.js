@@ -2,39 +2,63 @@ import React, { useState } from 'react';
 import logo from "../img/book.png";
 
 const AddBook = () => {
+  const uid = () => {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+  };
 
-  const [values, setValues] = useState({
-    author: "",
-    title: "",
-    genre: "",
-    cover: `${logo}`
+  const [bookValues, setBookValues] = useState({
+    "id": uid(),
+    "author": "",
+    "title": "",
+    "genre": "",
+    "cover": `${logo}`
   });
 
   const [submitted, setSubmitted] = useState(false);
-  const [valid, setValid] = useState(false);
+
 
   const handleAuthorInputChange = (event) => {
-    setValues({...values, author: event.target.value});
+    setBookValues({...bookValues, author: event.target.value});
   };
 
   const handleTitleInputChange = (event) => {
-    setValues({...values, title: event.target.value});
+    setBookValues({...bookValues, title: event.target.value});
   };
 
   const handleGenreInputChange = (event) => {
-    setValues({...values, genre: event.target.value});
+    setBookValues({...bookValues, genre: event.target.value});
   };
 
   const handleCoverInputChange = (event) => {
-    setValues({...values, cover: event.target.value});
+    setBookValues({...bookValues, cover: event.target.value});
   };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(values.author && values.title && values.genre) {
-      setValid(true);
-    };
     setSubmitted(true);
+    saveToLocalStorage(bookValues);
+    removeNotify();
+  };
+
+  const removeNotify = () => {
+    setTimeout(
+      () => setSubmitted(false),
+      4000
+    )
+  };
+
+  const saveToLocalStorage = (bookValues) => {
+    let books;
+    if(localStorage.getItem("books") === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem("books"));
+    };
+
+    books.push(bookValues);
+    localStorage.setItem("books", JSON.stringify(books));
+
   };
 
   return (
@@ -45,7 +69,7 @@ const AddBook = () => {
         {
           submitted
           ?
-          <div className="flex items-center justify-center pa4 bg-washed-green dark-green">
+          <div className="flex items-center justify-center pa2 bg-washed-green dark-green">
             <span className="lh-title ml3">Book successfully added!</span>
           </div>
           : <legend className="f4 fw6 ph0 mh0 dark-green">Adding Book</legend>
@@ -56,7 +80,7 @@ const AddBook = () => {
             <input id="name"
                   required
                   onChange={handleAuthorInputChange}
-                  value={values.author}
+                  value={bookValues.author}
                   className="input-reset ba b--black-20 pa2 mb2 db w-100"
                   type="text"
                   aria-describedby="author-name"></input>
@@ -66,7 +90,7 @@ const AddBook = () => {
             <input id="title"
                   required
                   onChange={handleTitleInputChange}
-                  value={values.title}
+                  value={bookValues.title}
                   className="input-reset ba b--black-20 pa2 mb2 db w-100"
                   type="text"
                   aria-describedby="title"></input>
@@ -76,7 +100,7 @@ const AddBook = () => {
             <input id="genre"
                   required
                   onChange={handleGenreInputChange}
-                  value={values.genre}
+                  value={bookValues.genre}
                   className="input-reset ba b--black-20 pa2 mb2 db w-100"
                   type="text"
                   aria-describedby="genre"></input>
@@ -85,7 +109,7 @@ const AddBook = () => {
             <label className="f7 b db mb2">Book Cover URL</label>
             <input id="cover"
                   onChange={handleCoverInputChange}
-                  value={values.cover}
+                  value={bookValues.cover}
                   className="input-reset ba b--black-20 pa2 mb2 db w-100"
                   type="text"
                   aria-describedby="cover-img"></input>
